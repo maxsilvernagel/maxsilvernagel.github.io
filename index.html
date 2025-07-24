@@ -1,18 +1,44 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-  <title>Gurp Button</title>
+  <title>Date Calculator</title>
 </head>
 <body>
+  <h2>Date Calculator</h2>
 
-  <button onclick="showMessage()">gurp</button>
-  <p id="message"></p>
+  <label>Start Date:</label><br>
+  Day: <input type="number" id="day" min="1" max="31"><br>
+  Month: <input type="number" id="month" min="1" max="12"><br>
+  Year: <input type="number" id="year"><br><br>
+
+  <label>Add:</label><br>
+  Days: <input type="number" id="addDays"><br>
+  Months: <input type="number" id="addMonths"><br>
+  Years: <input type="number" id="addYears"><br><br>
+
+  <button onclick="calculateDate()">Calculate</button>
+
+  <h3>Result:</h3>
+  <p id="result"></p>
 
   <script>
-    function showMessage() {
-      document.getElementById("message").innerText = "hello world";
+    function calculateDate() {
+      let day = parseInt(document.getElementById("day").value);
+      let month = parseInt(document.getElementById("month").value) - 1; // JS months are 0-indexed
+      let year = parseInt(document.getElementById("year").value);
+
+      let addDays = parseInt(document.getElementById("addDays").value) || 0;
+      let addMonths = parseInt(document.getElementById("addMonths").value) || 0;
+      let addYears = parseInt(document.getElementById("addYears").value) || 0;
+
+      let date = new Date(year, month, day);
+      date.setFullYear(date.getFullYear() + addYears);
+      date.setMonth(date.getMonth() + addMonths);
+      date.setDate(date.getDate() + addDays);
+
+      let result = date.toDateString();
+      document.getElementById("result").innerText = result;
     }
   </script>
-
 </body>
 </html>
