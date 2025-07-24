@@ -1,29 +1,71 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Date Calculator</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .row input {
+      width: 80px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    #result {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
   <h2>Date Calculator</h2>
 
-  <label>Start Date:</label><br>
-  Month: <input type="number" id="month" min="1" max="12"><br>
-  Day: <input type="number" id="day" min="1" max="31"><br>
-  Year: <input type="number" id="year"><br><br>
+  <div class="section">
+    <label>Start Date:</label>
+    <div class="row">
+      <input type="number" id="month" min="1" max="12" placeholder="MM">
+      <input type="number" id="day" min="1" max="31" placeholder="DD">
+      <input type="number" id="year" placeholder="YYYY">
+    </div>
+  </div>
 
-  <label>Add:</label><br>
-  Months: <input type="number" id="addMonths"><br>
-  Days: <input type="number" id="addDays"><br>
-  Years: <input type="number" id="addYears"><br><br>
+  <div class="section">
+    <label>Add:</label>
+    <div class="row">
+      <input type="number" id="addMonths" placeholder="Months">
+      <input type="number" id="addDays" placeholder="Days">
+      <input type="number" id="addYears" placeholder="Years">
+    </div>
+  </div>
 
   <button onclick="calculateDate()">Calculate</button>
 
-  <h3>Result:</h3>
-  <p id="result"></p>
+  <div class="section">
+    <label>Result:</label>
+    <div class="row">
+      <p id="result"></p>
+    </div>
+  </div>
 
   <script>
     function calculateDate() {
-      let month = parseInt(document.getElementById("month").value) - 1; // JS months are 0-indexed
+      let month = parseInt(document.getElementById("month").value) - 1;
       let day = parseInt(document.getElementById("day").value);
       let year = parseInt(document.getElementById("year").value);
 
