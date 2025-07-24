@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
   <title>Date Calculator</title>
@@ -7,13 +7,13 @@
   <h2>Date Calculator</h2>
 
   <label>Start Date:</label><br>
-  Day: <input type="number" id="day" min="1" max="31"><br>
   Month: <input type="number" id="month" min="1" max="12"><br>
+  Day: <input type="number" id="day" min="1" max="31"><br>
   Year: <input type="number" id="year"><br><br>
 
   <label>Add:</label><br>
-  Days: <input type="number" id="addDays"><br>
   Months: <input type="number" id="addMonths"><br>
+  Days: <input type="number" id="addDays"><br>
   Years: <input type="number" id="addYears"><br><br>
 
   <button onclick="calculateDate()">Calculate</button>
@@ -23,8 +23,8 @@
 
   <script>
     function calculateDate() {
-      let day = parseInt(document.getElementById("day").value);
       let month = parseInt(document.getElementById("month").value) - 1; // JS months are 0-indexed
+      let day = parseInt(document.getElementById("day").value);
       let year = parseInt(document.getElementById("year").value);
 
       let addDays = parseInt(document.getElementById("addDays").value) || 0;
@@ -36,7 +36,10 @@
       date.setMonth(date.getMonth() + addMonths);
       date.setDate(date.getDate() + addDays);
 
-      let result = date.toDateString();
+      let result = `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
+                   `${date.getDate().toString().padStart(2, '0')}/` +
+                   `${date.getFullYear()}`;
+
       document.getElementById("result").innerText = result;
     }
   </script>
