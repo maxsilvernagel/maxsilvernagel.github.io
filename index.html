@@ -32,17 +32,17 @@
     }
 
     .button-row {
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <h2>PrimeWest Date Calculator</h2>
+  <h2>Date Calculator</h2>
 
   <div class="section">
     <label>Start Date:</label>
     <div class="button-row">
-      <button onclick="useCurrentDate()">Use Current Date</button>
+      <button type="button" onclick="useCurrentDate()">Use Current Date</button>
     </div>
     <div class="row">
       <input type="number" id="month" min="1" max="12" placeholder="MM">
@@ -78,18 +78,25 @@
     }
 
     function calculateDate() {
-      let month = parseInt(document.getElementById("month").value) - 1;
-      let day = parseInt(document.getElementById("day").value);
-      let year = parseInt(document.getElementById("year").value);
+      const month = parseInt(document.getElementById("month").value) - 1;
+      const day = parseInt(document.getElementById("day").value);
+      const year = parseInt(document.getElementById("year").value);
 
-      let addDays = parseInt(document.getElementById("addDays").value) || 0;
-      let addMonths = parseInt(document.getElementById("addMonths").value) || 0;
-      let addYears = parseInt(document.getElementById("addYears").value) || 0;
+      const addDays = parseInt(document.getElementById("addDays").value) || 0;
+      const addMonths = parseInt(document.getElementById("addMonths").value) || 0;
+      const addYears = parseInt(document.getElementById("addYears").value) || 0;
 
-      let date = new Date(year, month, day);
+      const date = new Date(year, month, day);
       date.setFullYear(date.getFullYear() + addYears);
       date.setMonth(date.getMonth() + addMonths);
       date.setDate(date.getDate() + addDays);
 
-      let result = `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
-                   `${date.getDate().toString().padStart
+      const result = `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
+                     `${date.getDate().toString().padStart(2, '0')}/` +
+                     `${date.getFullYear()}`;
+
+      document.getElementById("result").innerText = result;
+    }
+  </script>
+</body>
+</html>
