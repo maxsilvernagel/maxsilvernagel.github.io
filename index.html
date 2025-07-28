@@ -12,7 +12,6 @@
     .row {
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 10px;
       margin-bottom: 15px;
     }
@@ -31,18 +30,24 @@
       font-weight: bold;
       font-size: 1.2em;
     }
+
+    .button-row {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
-  <h2>Date Calculator</h2>
+  <h2>PrimeWest Date Calculator</h2>
 
   <div class="section">
     <label>Start Date:</label>
+    <div class="button-row">
+      <button onclick="useCurrentDate()">Use Current Date</button>
+    </div>
     <div class="row">
       <input type="number" id="month" min="1" max="12" placeholder="MM">
       <input type="number" id="day" min="1" max="31" placeholder="DD">
       <input type="number" id="year" placeholder="YYYY">
-      <button onclick="useCurrentDate()">Use Current Date</button>
     </div>
   </div>
 
@@ -87,11 +92,4 @@
       date.setDate(date.getDate() + addDays);
 
       let result = `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
-                   `${date.getDate().toString().padStart(2, '0')}/` +
-                   `${date.getFullYear()}`;
-
-      document.getElementById("result").innerText = result;
-    }
-  </script>
-</body>
-</html>
+                   `${date.getDate().toString().padStart
